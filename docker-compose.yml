@@ -1,0 +1,11 @@
+services:
+  subsync:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - SUBSYNC_DEVICE=cpu
+      - SUBSYNC_CLEANUP_DELAY=3600
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs

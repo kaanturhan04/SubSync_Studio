@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+subsync_history.db
+.env
