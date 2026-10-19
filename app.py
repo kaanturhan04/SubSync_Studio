@@ -481,7 +481,10 @@ def process():
 
         segments_gen, info = model.transcribe(
             input_path, language=lang_param, task="transcribe",
-            beam_size=5, temperature=0.0, vad_filter=True
+            beam_size=5, temperature=[0.0, 0.2, 0.4, 0.6, 0.8, 1.0], vad_filter=True,
+            condition_on_previous_text=False, repetition_penalty=1.15,
+            compression_ratio_threshold=2.4, log_prob_threshold=-1.0, no_speech_threshold=0.6,
+            vad_parameters=dict(min_silence_duration_ms=500, speech_pad_ms=200)
         )
         detected_lang = info.language
         segments = [{"start": s.start, "end": s.end, "text": s.text} for s in segments_gen]
@@ -839,7 +842,10 @@ def api_process():
 
         segments_gen, info = model.transcribe(
             input_path, language=lang_param, task="transcribe",
-            beam_size=5, temperature=0.0, vad_filter=True
+            beam_size=5, temperature=[0.0, 0.2, 0.4, 0.6, 0.8, 1.0], vad_filter=True,
+            condition_on_previous_text=False, repetition_penalty=1.15,
+            compression_ratio_threshold=2.4, log_prob_threshold=-1.0, no_speech_threshold=0.6,
+            vad_parameters=dict(min_silence_duration_ms=500, speech_pad_ms=200)
         )
         detected_lang = info.language
         segments = [{"start": s.start, "end": s.end, "text": s.text} for s in segments_gen]
