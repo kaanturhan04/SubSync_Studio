@@ -7,3 +7,7 @@ outputs/*
 !outputs/.gitkeep
 subsync_history.db
 .env
+temp_agi/
+temp_yt/
+test_audio/
+*.bak
